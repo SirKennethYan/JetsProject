@@ -1,11 +1,10 @@
 package com.skilldistillery.app;
-
 import java.util.Scanner;
-import com.skilldistillery.entities.*;
+
+import com.skilldistillery.entities.AirField;
+//import com.skilldistillery.entities.*;
 
 public class JetsApp {
-	static AirField af;
-
 	public static void main(String[] args) {
 		JetsApp ja = new JetsApp();
 
@@ -13,7 +12,7 @@ public class JetsApp {
 	}
 
 //	User Story #4
-	private static void printMenu() {
+	private void printMenu() {
 		Scanner userInput = new Scanner(System.in);
 
 		System.out.println("Welcome to the Jets App! Choose a selection from the list below.");
@@ -36,7 +35,7 @@ public class JetsApp {
 			userInput.nextLine();
 
 		} else if (menuChoice.equals("2")) {
-			viewFastestJets();
+			fly();
 			printMenu();
 			userInput.nextLine();
 
@@ -72,10 +71,10 @@ public class JetsApp {
 
 		} else if (menuChoice.equals("9")) {
 			System.out.println("Goodbye! ");
-			quitApp();
+
 
 		} else {
-			System.out.println("Invalid input. Please enter a number between 1 and 4.");
+			System.out.println("Invalid input. Enter a number between 1 and 9. ");
 			printMenu();
 
 			userInput.close();
@@ -84,47 +83,69 @@ public class JetsApp {
 	}// printMenu()
 
 	private static void listFleet() {
-		af.readJets();
+		JetsApp ja = new JetsApp();
+		AirField af = new AirField();
+		af.showFastestJet();
 	}
+	
+//	private static void listFleet() {
+//
+//		for (JetsApp fleet : fleetOfJets) {
+//			if (fleet != null) {
+//				System.out.println(AirField.showListOfJets());
+//			}
+//
+//		}
+//
+//	}// displayTrucks_Bracket
 
-	private static void flyAllJets() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private static void viewFastestJets() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private static void viewJetLongestRange() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private static void loadAllCargo() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private static void dogFight() {
-		// TODO Auto-generated method stub
+	private void fly() {
+		AirField af = new AirField();
+		af.fly();
 
 	}
+	
+//	private void flyAllJets() {
+//		  for (JetsApp ja : jetsApp) {
+//		    ja.fly();
+//		  }
+//		}
 
-	private static void addJetToFleet() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private static void removeJetFromFleet() {
-		// TODO Auto-generated method stub
+	private void viewFastestJets() {
+		JetsApp ja = new JetsApp();
+		ja.viewFastestJets();
 
 	}
 
-	private static void quitApp() {
-		// TODO Auto-generated method stub
+	private void viewJetLongestRange() {
+		JetsApp ja = new JetsApp();
+		ja.viewJetLongestRange();
 
 	}
+
+	private void loadAllCargo() {
+		JetsApp ja = new JetsApp();
+		ja.loadAllCargo();
+
+	}
+
+	private void dogFight() {
+		JetsApp ja = new JetsApp();
+		ja.dogFight();
+
+	}
+
+	private void addJetToFleet() {
+		JetsApp ja = new JetsApp();
+		ja.addJetToFleet();
+
+	}
+
+	private void removeJetFromFleet() {
+		JetsApp ja = new JetsApp();
+		ja.removeJetFromFleet();
+
+	}
+
 
 }

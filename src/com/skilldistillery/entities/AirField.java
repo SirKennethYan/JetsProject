@@ -8,21 +8,21 @@ import java.util.List;
 
 public class AirField {
 //	User Story #2
-	private List<Jet> fleetOfJets;
+	public List<Jet> fleetOfJets = new ArrayList<>();// An ArrayList to hold Strings
+
+	public List<Jet> getFleetOfJets() {
+		return fleetOfJets;
+	}
+
+	public void setfleetOfJets(List<Jet> fleetOfJets) {
+		this.fleetOfJets = fleetOfJets;
+	}
 
 	public AirField() {
-		this.fleetOfJets = new ArrayList<>();
-
 		String fileName = "jets.txt";
-		this.fleetOfJets = readJets(fileName);
-		printJets(fleetOfJets);
-	}// Airfield()
+		fleetOfJets = readJets(fileName);
 
-	private void printJets(List<Jet> jetsToPrint) {
-		for (Jet jet : jetsToPrint) {
-			System.out.println(jet);
-		}
-	}// printJets()
+	}// Airfield()
 
 //	User Story #3
 	public List<Jet> readJets(String fileName) {
@@ -38,7 +38,7 @@ public class AirField {
 				double speedAircraft = Double.parseDouble(splitJetData[2]);
 				int rangeAircraft = Integer.parseInt(splitJetData[3]);
 				long priceAircraft = Long.parseLong(splitJetData[4]);
-		
+
 				if (type.equalsIgnoreCase("FighterJet")) {
 					jet = new FighterJet(modelAircraft, speedAircraft, rangeAircraft, priceAircraft);
 				} else if (type.equalsIgnoreCase("CargoPlane")) {
@@ -56,9 +56,53 @@ public class AirField {
 
 	}// readJets()
 
-	
-//	public void showFastestJet() {
+	public void showListOfJets() {
+		System.out.println(fleetOfJets);
+
+	}
+
+//	private static void showListOfJets() {
 //
-//	}
+//		for (Jet fleet : fleetOfJets) {
+//			if (fleet != null) {
+//				System.out.println(fleetOfJets);
+//			}
+//
+//		}
+//
+
+//	}// displayTrucks_Bracket
+
+
+	public void fly() {
+		for (Jet jet : fleetOfJets) {
+			System.out.println(jet);
+			jet.fly();
+		}
+	}
+
+	public void showFastestJet() {
+		Jet fastest = null;
+		for (Jet jet : fleetOfJets) {
+			if (fastest == null) {
+				fastest = jet;
+			} else if (jet.getSpeedAircraft() > fastest.getSpeedAircraft()) {
+				fastest = jet;
+			}
+		}
+		System.out.println("Fastest: " + fastest);
+	}
+
+	public Jet getLongestRange() {
+		Jet topRangeJet = null;
+		for (Jet jet : fleetOfJets) {
+			if (topRangeJet.getRangeAircraft() < jet.getRangeAircraft()) {
+				topRangeJet = jet;
+			}
+		}
+		System.out.println(topRangeJet);
+		return topRangeJet;
+
+	}
 
 }// Class_Bracket

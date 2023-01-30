@@ -13,17 +13,13 @@ public abstract class Jet {
 	}// Jet_Bracket
 	
 	public Jet(String modelAircraft, double speedAircraft, int rangeAircraft, long priceAircraft) {
-		
+		super();
 		this.modelAircraft = modelAircraft;
 		this.speedAircraft = speedAircraft;
 		this.rangeAircraft = rangeAircraft;
 		this.priceAircraft = priceAircraft;
 		
 	}// Jet_Bracket
-	
-	public void fly() {
-
-	}// Fly_Bracket
 	
 	public String getModelAircraft() {
 		return modelAircraft;
@@ -64,6 +60,13 @@ public abstract class Jet {
 				+ ", getSpeedAircraft()=" + getSpeedAircraft() + ", getRangeAircraft()=" + getRangeAircraft()
 				+ ", getPriceAircraft()=" + getPriceAircraft() + "]";
 	}
+	
+	public void fly() {
+		double time = this.getRangeAircraft() / this.getSpeedAircraft();
+		System.out.println("Aircraft Model: " + this.getModelAircraft() + ", Speed: " + this.getSpeedAircraft()
+				+ " in MPH. Range: " + this.getRangeAircraft() + " in miles. ");
+		System.out.println("This Air Craft will fly for " + Math.round(time) + " hours. ");
+	}// Fly_Bracket
 
 	
 }// Class_Bracket

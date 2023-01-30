@@ -1,9 +1,7 @@
 package com.skilldistillery.entities;
 
-public class CargoCarrier extends CargoPlane {
+public interface CargoCarrier {
 
-	public void loadCargo() {
-		System.out.println("LOADING ALL CARGO!");
-	}
+	public void loadAllCargo();
 
 }
