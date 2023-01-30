@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AirField {
-//	User Story #2
 	public List<Jet> fleetOfJets = new ArrayList<>();// An ArrayList to hold Strings
 
 	public List<Jet> getFleetOfJets() {
@@ -24,7 +23,6 @@ public class AirField {
 
 	}// Airfield()
 
-//	User Story #3
 	public List<Jet> readJets(String fileName) {
 
 		List<Jet> allJets = new ArrayList<>();
@@ -60,19 +58,6 @@ public class AirField {
 		System.out.println(fleetOfJets);
 
 	}
-
-//	private static void showListOfJets() {
-//
-//		for (Jet fleet : fleetOfJets) {
-//			if (fleet != null) {
-//				System.out.println(fleetOfJets);
-//			}
-//
-//		}
-//
-
-//	}// displayTrucks_Bracket
-
 
 	public void fly() {
 		for (Jet jet : fleetOfJets) {

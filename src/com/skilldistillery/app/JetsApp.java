@@ -1,8 +1,8 @@
 package com.skilldistillery.app;
+
 import java.util.Scanner;
 
 import com.skilldistillery.entities.AirField;
-//import com.skilldistillery.entities.*;
 
 public class JetsApp {
 	public static void main(String[] args) {
@@ -11,7 +11,6 @@ public class JetsApp {
 		ja.printMenu();
 	}
 
-//	User Story #4
 	private void printMenu() {
 		Scanner userInput = new Scanner(System.in);
 
@@ -72,7 +71,6 @@ public class JetsApp {
 		} else if (menuChoice.equals("9")) {
 			System.out.println("Goodbye! ");
 
-
 		} else {
 			System.out.println("Invalid input. Enter a number between 1 and 9. ");
 			printMenu();
@@ -87,29 +85,12 @@ public class JetsApp {
 		AirField af = new AirField();
 		af.showFastestJet();
 	}
-	
-//	private static void listFleet() {
-//
-//		for (JetsApp fleet : fleetOfJets) {
-//			if (fleet != null) {
-//				System.out.println(AirField.showListOfJets());
-//			}
-//
-//		}
-//
-//	}// displayTrucks_Bracket
 
 	private void fly() {
 		AirField af = new AirField();
 		af.fly();
 
 	}
-	
-//	private void flyAllJets() {
-//		  for (JetsApp ja : jetsApp) {
-//		    ja.fly();
-//		  }
-//		}
 
 	private void viewFastestJets() {
 		JetsApp ja = new JetsApp();
@@ -146,6 +127,5 @@ public class JetsApp {
 		ja.removeJetFromFleet();
 
 	}
-
 
 }
