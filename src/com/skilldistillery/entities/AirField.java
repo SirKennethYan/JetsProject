@@ -106,7 +106,7 @@ public class AirField {
 			long price = userInput.nextLong();
 
 			af.getFleetOfJets().add(new JetImpl(model, speed, range, price));
-			System.out.println("Jet added. ");
+			System.out.println("Jet added to fleet. ");
 		} catch (InputMismatchException e) {
 			System.out.println("Invalid input: ");
 			userInput.nextLine();
@@ -133,7 +133,7 @@ public class AirField {
 			}
 
 		} catch (InputMismatchException e) {
-			System.out.println("Invalid input");
+			System.out.println("Invalid input: ");
 			userInput.nextLine();
 		}
 	}
