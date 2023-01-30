@@ -3,6 +3,8 @@ package com.skilldistillery.app;
 import java.util.Scanner;
 
 import com.skilldistillery.entities.AirField;
+import com.skilldistillery.entities.CargoPlane;
+import com.skilldistillery.entities.FighterJet;
 
 public class JetsApp {
 	public static void main(String[] args) {
@@ -29,7 +31,7 @@ public class JetsApp {
 		String menuChoice = userInput.nextLine();
 
 		if (menuChoice.equals("1")) {
-			listFleet();
+			showListOfJets();
 			printMenu();
 			userInput.nextLine();
 
@@ -80,10 +82,9 @@ public class JetsApp {
 
 	}// printMenu()
 
-	private static void listFleet() {
-		JetsApp ja = new JetsApp();
+	private void showListOfJets() {
 		AirField af = new AirField();
-		af.showFastestJet();
+		af.showListOfJets();
 	}
 
 	private void fly() {
@@ -93,38 +94,38 @@ public class JetsApp {
 	}
 
 	private void viewFastestJets() {
-		JetsApp ja = new JetsApp();
-		ja.viewFastestJets();
+		AirField af = new AirField();
+		af.showFastestJet();
 
 	}
 
 	private void viewJetLongestRange() {
-		JetsApp ja = new JetsApp();
-		ja.viewJetLongestRange();
+		AirField af = new AirField();
+		af.showLongestRange();
 
 	}
 
 	private void loadAllCargo() {
-		JetsApp ja = new JetsApp();
-		ja.loadAllCargo();
+		CargoPlane cp = new CargoPlane();
+		cp.loadAllCargo();
 
 	}
 
 	private void dogFight() {
-		JetsApp ja = new JetsApp();
-		ja.dogFight();
+		FighterJet fj = new FighterJet();
+		fj.dogFight();
 
 	}
 
 	private void addJetToFleet() {
-		JetsApp ja = new JetsApp();
-		ja.addJetToFleet();
+		AirField af = new AirField();
+		af.addJetToFleet();
 
 	}
 
 	private void removeJetFromFleet() {
-		JetsApp ja = new JetsApp();
-		ja.removeJetFromFleet();
+		AirField af = new AirField();
+		af.removeJetFromFleet();
 
 	}
 
