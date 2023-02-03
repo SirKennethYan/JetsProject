@@ -16,10 +16,7 @@ public class FighterJet extends Jet implements CombatReady {
 	}
 
 	public void fly() {
-		double time = this.getRangeAircraft() / this.getSpeedAircraft();
-		System.out.println("Aircraft Model: " + this.getModelAircraft() + ", Speed: " + this.getSpeedAircraft()
-				+ " in MPH. Range: " + this.getRangeAircraft() + " in miles. ");
-		System.out.println("This Air Craft will fly for " + Math.round(time) + " hours. ");
-	}// Fly_Bracket
+
+	}
 
 }

@@ -12,10 +12,7 @@ public class JetImpl extends Jet {
 	}
 
 	public void fly() {
-		double time = this.getRangeAircraft() / this.getPriceAircraft();
-		System.out.println("Aircraft Model: " + this.getModelAircraft() + ", Speed: " + this.getSpeedAircraft()
-				+ " in MPH. Range: " + this.getRangeAircraft() + " in miles. ");
-		System.out.println("This Air Craft will fly for " + Math.round(time) + " hours. ");
-	}// Fly_Bracket
+
+	}
 
 }

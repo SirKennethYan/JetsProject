@@ -9,30 +9,29 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AirField {
-	public List<Jet> fleetOfJets = new ArrayList<>();// An ArrayList to hold Strings
+	private ArrayList<Jet> fleetOfJets = new ArrayList<>();// An ArrayList to hold Strings
 
-	public List<Jet> getFleetOfJets() {
+	public ArrayList<Jet> getFleetOfJets() {
 		return fleetOfJets;
 	}
 
-	public void setfleetOfJets(List<Jet> fleetOfJets) {
+	public void setFleetOfJets(ArrayList<Jet> fleetOfJets) {
 		this.fleetOfJets = fleetOfJets;
 	}
 
 	public AirField() {
 		String fileName = "jets.txt";
-		fleetOfJets = readJets(fileName);
+		readJets(fileName);
 
 	}// Airfield()
 
 	public List<Jet> readJets(String fileName) {
 
-		List<Jet> allJets = new ArrayList<>();
 		try (BufferedReader bufIn = new BufferedReader(new FileReader(fileName))) {
 			String line;
 			while ((line = bufIn.readLine()) != null) {
 				Jet jet = null;
-				String[] splitJetData = line.split(", ");
+				String[] splitJetData = line.split(",");
 				String type = splitJetData[0];
 				String modelAircraft = splitJetData[1];
 				double speedAircraft = Double.parseDouble(splitJetData[2]);
@@ -46,25 +45,51 @@ public class AirField {
 				} else if (type.equalsIgnoreCase("AttackHelicopter")) {
 					jet = new AttackHelicopter(modelAircraft, speedAircraft, rangeAircraft, priceAircraft);
 
-					allJets.add(jet);
 				}
+				fleetOfJets.add(jet);
 			}
 		} catch (IOException e) {
 			System.err.println(e);
 		}
-		return allJets;
+		return fleetOfJets;
 
 	}// readJets()
 
 	public void showListOfJets() {
-		System.out.println(fleetOfJets);
+		System.out.println(fleetOfJets.size());
+		for (Jet jet : fleetOfJets) {
+
+			System.out.println(jet);
+		}
 
 	}
 
+	public void loadAllCargo() {
+		for (Jet jet : fleetOfJets) {
+			if (jet instanceof CargoPlane) {
+				((CargoPlane) jet).loadAllCargo();
+			}
+		}
+	}
+
+	public void dogFight() {
+		for (Jet jet : fleetOfJets) {
+			if (jet instanceof FighterJet) {
+				((FighterJet) jet).dogFight();
+			} else if (jet instanceof AttackHelicopter) {
+				((AttackHelicopter) jet).dogFight();
+			}
+		}
+	}
+	
+	
+
 	public void fly() {
 		for (Jet jet : fleetOfJets) {
-			System.out.println(jet);
-			jet.fly();
+			double time = jet.getRangeAircraft() / jet.getSpeedAircraft();
+			System.out.println("Aircraft Model: " + jet.getModelAircraft() + " Speed: " + jet.getSpeedAircraft()
+					+ " MPH. Range: " + jet.getRangeAircraft() + " Miles. ");
+			System.out.println(jet.getModelAircraft() + " will fly for " + Math.round(time) + " hours. ");
 		}
 	}
 
@@ -81,7 +106,7 @@ public class AirField {
 	}
 
 	public Jet showLongestRange() {
-		Jet topRangeJet = null;
+		Jet topRangeJet = fleetOfJets.get(0);
 		for (Jet jet : fleetOfJets) {
 			if (topRangeJet.getRangeAircraft() < jet.getRangeAircraft()) {
 				topRangeJet = jet;
@@ -92,9 +117,7 @@ public class AirField {
 
 	}
 
-	public void addJetToFleet() {
-		AirField af = new AirField();
-		Scanner userInput = new Scanner(System.in);
+	public void addJetToFleet(Scanner userInput) {
 		try {
 			System.out.print("Enter the Jets model: ");
 			String model = userInput.next();
@@ -105,18 +128,14 @@ public class AirField {
 			System.out.print("Enter the Jets price: ");
 			long price = userInput.nextLong();
 
-			af.getFleetOfJets().add(new JetImpl(model, speed, range, price));
-			System.out.println("Jet added to fleet. ");
+			fleetOfJets.add(new JetImpl(model, speed, range, price));
+			System.out.println("Jet added to fleet!!! ");
 		} catch (InputMismatchException e) {
 			System.out.println("Invalid input: ");
-			userInput.nextLine();
 		}
 	}
 
-	public void removeJetFromFleet() {
-		Scanner userInput = new Scanner(System.in);
-		AirField af = new AirField();
-		List<Jet> fleetOfJets = af.getFleetOfJets();
+	public void removeJetFromFleet(Scanner userInput) {
 
 		for (int i = 0; i < fleetOfJets.size(); i++) {
 			System.out.println(i + 1 + ". " + fleetOfJets.get(i));
@@ -126,7 +145,7 @@ public class AirField {
 		try {
 			int choice = userInput.nextInt();
 			if (choice < fleetOfJets.size() + 1 && choice > 0) {
-				System.out.println(fleetOfJets.get(choice - 1).getModelAircraft() + " deleted. ");
+				System.out.println(fleetOfJets.get(choice - 1).getModelAircraft() + " deleted!!! ");
 				fleetOfJets.remove(choice - 1);
 			} else {
 				System.out.println("Not a valid choice");
@@ -134,7 +153,6 @@ public class AirField {
 
 		} catch (InputMismatchException e) {
 			System.out.println("Invalid input: ");
-			userInput.nextLine();
 		}
 	}
 

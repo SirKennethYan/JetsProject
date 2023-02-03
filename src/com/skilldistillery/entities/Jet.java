@@ -54,18 +54,9 @@ public abstract class Jet {
 
 	@Override
 	public String toString() {
-		return "Jet [modelAircraft=" + modelAircraft + ", speedAircraft=" + speedAircraft + ", rangeAircraft="
-				+ rangeAircraft + ", priceAircraft=" + priceAircraft + ", getModelAircraft()=" + getModelAircraft()
-				+ ", getSpeedAircraft()=" + getSpeedAircraft() + ", getRangeAircraft()=" + getRangeAircraft()
-				+ ", getPriceAircraft()=" + getPriceAircraft() + "]";
+		return "Aircraft Model: " + modelAircraft + " Speed: " + speedAircraft + " MPH. "
+				+ " Range: " + rangeAircraft + " Miles. " + " Price: " + priceAircraft
+				+ " Dollars. ";
 	}
-
-	public void fly() {
-		double time = this.getRangeAircraft() / this.getSpeedAircraft();
-		System.out.println("Aircraft Model: " + this.getModelAircraft() + ", Speed: " + this.getSpeedAircraft()
-				+ " in MPH. Range: " + this.getRangeAircraft() + " in miles. ");
-		System.out.println("This Air Craft will fly for " + Math.round(time) + " hours. ");
-
-	}// Fly_Bracket
 
 }// Class_Bracket

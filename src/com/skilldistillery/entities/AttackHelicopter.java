@@ -1,6 +1,9 @@
 package com.skilldistillery.entities;
 
+import java.util.ArrayList;
+
 public class AttackHelicopter extends Jet implements CombatReady {
+	public ArrayList<Jet> fleetOfJets = new ArrayList<>();
 
 	public AttackHelicopter() {
 
@@ -12,14 +15,11 @@ public class AttackHelicopter extends Jet implements CombatReady {
 
 	@Override
 	public void dogFight() {
-		System.out.println(this.getModelAircraft() + " is engaging in Air-to-Air combat!!! ");
+		System.out.println(this.getModelAircraft() + " is firing missles!!! ");
 	}
 
 	public void fly() {
-		double time = this.getRangeAircraft() / this.getPriceAircraft();
-		System.out.println("Aircraft Model: " + this.getModelAircraft() + ", Speed: " + this.getSpeedAircraft()
-				+ " in MPH. Range: " + this.getRangeAircraft() + " in miles. ");
-		System.out.println("This Air Craft will fly for " + Math.round(time) + " hours. ");
-	}// Fly_Bracket
+
+	}
 
 }
